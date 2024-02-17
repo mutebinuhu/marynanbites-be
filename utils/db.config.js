@@ -14,7 +14,7 @@ db.on('error', (error) => {
 });
 
 db.once('open', () => {
-    console.log('Connected to MongoDB');
+    console.log('Connected to MongoDB currently');
 });
 
 module.exports = mongoose;
