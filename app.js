@@ -11,6 +11,7 @@ app.use(cors())
 app.use("/api/menu", menuController)
 app.use("/api/auth", loginController)
 app.use("/api/register", userRegistrationController);
+app.use("/api/update", userRegistrationController);
 
 
 
