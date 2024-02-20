@@ -6,9 +6,11 @@ let app = express()
 app.use(express.json());
 const menuController = require('./controllers/menuController')
 const loginController = require('./controllers/authController')
+const userRegistrationController = require("./controllers/userRegistrationController");
 app.use(cors())
 app.use("/api/menu", menuController)
 app.use("/api/auth", loginController)
+app.use("/api/register", userRegistrationController);
 
 
 
