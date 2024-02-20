@@ -7,9 +7,10 @@ cloudinary.config({
   api_key: process.env.CLOUDINARY_API,
   api_secret: process.env.CLOUDINARY_SECRET,
 });
-const MenuItem = require('../models/menu')
+const MenuItem = require('../models/menu');
+const authenticateToken  = require('../middlewares/auth');
 // API Routes
-Router.get('/', async (req, res) => {
+Router.get('/', authenticateToken,  async (req, res) => {
     try {
   
     
