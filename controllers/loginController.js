@@ -2,11 +2,11 @@ const Router = require('express').Router();
 const User = require('../models/user');
 const jwt = require('jsonwebtoken');
 Router.post('/', async (req, res) => {
-    const { username, phoneNumber } = req.body;
+    const { phoneNumber } = req.body;
 
   
     // Validate input data (add additional validation as needed)
-    if (!username && !phoneNumber) {
+    if (!phoneNumber) {
         return res.status(400).json({ error: 'Please submit the required data' });
     }
 

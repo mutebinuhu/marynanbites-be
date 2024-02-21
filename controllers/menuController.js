@@ -9,6 +9,7 @@ cloudinary.config({
 });
 const MenuItem = require('../models/menu');
 const authenticateToken  = require('../middlewares/auth');
+const isAadmin = require('../middlewares/isAdmin');
 // API Routes
 Router.get('/',  async (req, res) => {
     try {
@@ -21,7 +22,7 @@ Router.get('/',  async (req, res) => {
     }
   });
   
-  Router.post('/', authenticateToken, async (req, res) => {
+  Router.post('/', authenticateToken, isAadmin,  async (req, res) => {
     try {
       const menuItem = new MenuItem(req.body);
       cloudinary.uploader.upload(req.body.image,
