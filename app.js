@@ -5,13 +5,16 @@ const cors = require("cors");
 let app = express()
 app.use(express.json());
 const menuController = require('./controllers/menuController')
-const loginController = require('./controllers/authController')
+//const loginController = require('./controllers/authController')
 const userRegistrationController = require("./controllers/userRegistrationController");
+const loginController = require("./controllers/loginController");
+
 app.use(cors())
 app.use("/api/menu", menuController)
-app.use("/api/auth", loginController)
 app.use("/api/register", userRegistrationController);
 app.use("/api/update", userRegistrationController);
+app.use("/api/login", loginController);
+
 
 
 

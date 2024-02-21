@@ -1,6 +1,7 @@
-const User = require('../models/user');
-
 const Router = require('express').Router();
+const User = require('../models/user');
+const jwt = require('jsonwebtoken');
+
 
 Router.post('/', async (req, res) => {
     const { username, phoneNumber, location } = req.body;
@@ -17,11 +18,14 @@ Router.post('/', async (req, res) => {
             phoneNumber,
             location,
         });
+        const token = jwt.sign({ newUser}, process.env.JWT_SECRET_KEY, { expiresIn: '1h' });
 
         // Save the user to the database
-        const savedUser = await newUser.save();
+        let  savedUser = await newUser.save();
+       
 
-        res.json(savedUser);
+
+        res.status(200).json({data:savedUser, token});
     } catch (error) {
         res.status(500).json({ error: 'Internal server error' });
     }

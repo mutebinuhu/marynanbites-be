@@ -10,7 +10,7 @@ cloudinary.config({
 const MenuItem = require('../models/menu');
 const authenticateToken  = require('../middlewares/auth');
 // API Routes
-Router.get('/', authenticateToken,  async (req, res) => {
+Router.get('/',  async (req, res) => {
     try {
   
     
@@ -21,7 +21,7 @@ Router.get('/', authenticateToken,  async (req, res) => {
     }
   });
   
-  Router.post('/', async (req, res) => {
+  Router.post('/', authenticateToken, async (req, res) => {
     try {
       const menuItem = new MenuItem(req.body);
       cloudinary.uploader.upload(req.body.image,
