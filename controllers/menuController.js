@@ -14,7 +14,6 @@ const isAadmin = require('../middlewares/isAdmin');
 Router.get('/',  async (req, res) => {
     try {
   
-    
       const menuItems = await MenuItem.find();
       return res.json(menuItems);
     } catch (err) {
